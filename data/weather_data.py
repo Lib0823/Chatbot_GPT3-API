@@ -1,4 +1,5 @@
 from utils import Api_key
+from data import get_time
 import requests, json
 
 
@@ -9,11 +10,13 @@ params = {
     'pageNo': '1',
     'numOfRows': '30',
     'dataType': 'JSON',
-    'base_date': '20230414',
-    'base_time': '1300',
-    'nx': '55',
-    'ny': '127'
+    'base_date': str(get_time.gDate()),
+    'base_time': str(get_time.gTime()),
+    'nx': '54',
+    'ny': '124'
 }
+
+print(params)
 
 # 강수 형태 - PTY
 # 기온 - T1H
@@ -37,6 +40,8 @@ pty_value = pty_item['obsrValue']
 wsd_item = next(item for item in data['response']['body']['items']['item']
                 if item['category'] == 'WSD')
 wsd_value = wsd_item['obsrValue']
+
+print(t1h_value)
 
 # [강수 형태] 없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7)
 if pty_value == '0':
