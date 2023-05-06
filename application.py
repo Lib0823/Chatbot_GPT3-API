@@ -1,12 +1,11 @@
 from utils import Api_key
 from data import get_data
-from learning import learn_data
+from learning import model_training
 
 from flask import Flask, request, jsonify, render_template
 
 import sys
 import openai
-import json
 
 application = Flask(__name__)
 
@@ -20,7 +19,7 @@ def chatbot():
     try:
         request_data = request.get_json()
         user_input = request_data['user_input']
-        response = learn_data(get_data.learn_data + [{"user": user_input, "ai": ""}])
+        response = model_training(get_data.learn_data + [{"user": user_input, "ai": ""}])
         return jsonify({"racle": response})
     
     except:

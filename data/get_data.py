@@ -1,16 +1,23 @@
 from data import weather_data
-import json
+from data import db_data_manage
+import pymongo
 
-# chat_data 로드
-with open("data/chatbot_data.json", "r") as f:
-    file_data = json.load(f)
-    
 
-# 날씨 정보 추가 학습
-file_data.append(weather_data.t1h_data)
-file_data.append(weather_data.pty_data)
-file_data.append(weather_data.wsd_data)
+# 날씨 데이터 처리
+db_data_manage.weather_deleteData()
+db_data_manage.weather_insertData()
 
-    
-learn_data = file_data
-print(learn_data)
+
+# mongoDB data로드
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+
+db = client["chatbot-data"]
+col = db["basic"]
+
+# 데이터 검색 - user, ai
+result = col.find({}, {"_id":0, "user":1, "ai":1})
+
+learn_data = []
+for data in result:
+    learn_data.append(data)
+

@@ -1,5 +1,5 @@
 from utils import Api_key
-from data import get_time
+from data import time_data
 import requests, json
 
 
@@ -10,13 +10,12 @@ params = {
     'pageNo': '1',
     'numOfRows': '30',
     'dataType': 'JSON',
-    'base_date': str(get_time.gDate()),
-    'base_time': str(get_time.gTime()),
+    'base_date': str(time_data.gDate()),
+    'base_time': str(time_data.gTime()),
     'nx': '54',
     'ny': '124'
 }
-
-print(params)
+#print(params)
 
 # 강수 형태 - PTY
 # 기온 - T1H
@@ -41,7 +40,8 @@ wsd_item = next(item for item in data['response']['body']['items']['item']
                 if item['category'] == 'WSD')
 wsd_value = wsd_item['obsrValue']
 
-print(t1h_value)
+#print(t1h_value)
+t1h = t1h_value
 
 # [강수 형태] 없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7)
 if pty_value == '0':
@@ -73,29 +73,8 @@ elif float(wsd_value) <= 17.1:
 else:
     wsd = '위험'
     
-t1h = t1h_value
-
-# print("기온: " + t1h)  # 기온
-# print("날씨: " + pty)  # 강수 형태
-# print("바람: " + wsd)
-
-# data_list = [t1h, pty, wsd]
 
 
-# JSON형태로 변환
-t1h_data = {
-    "user": '현재 기온',
-    "ai": t1h
-}
-pty_data = {
-    "user": '현재 날씨',
-    "ai": pty
-}
-wsd_data = {
-    "user": '현재 바람',
-    "ai": wsd
-}
 
-# print(t1h_data)
-# print(pty_data)
-# print(wsd_data)
+
+

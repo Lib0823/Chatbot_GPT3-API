@@ -12,7 +12,7 @@ max_tokens = config.max_tokens
 
 
 # 데이터 학습시키기
-def learn_data(chat_data):
+def model_training(chat_data):
     prompt = ""
     for chat in chat_data:
         prompt += f"User: {chat['user']}\nAI: {chat['ai']}\n"
