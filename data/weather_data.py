@@ -4,7 +4,7 @@ import requests
 import json
 
 try:
-    # 초단기 실황
+    # 초단기 실황.
     url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst'
     params = {
         'serviceKey': Api_key.weather_key,

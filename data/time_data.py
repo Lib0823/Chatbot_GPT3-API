@@ -3,7 +3,7 @@ import pytz
 
 # 날짜 반환
 def getDate():
-    # 지역 세팅
+    # 지역 세팅.
     mytz = pytz.timezone('Asia/Seoul')
 
     # 현재 시간

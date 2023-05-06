@@ -4,7 +4,7 @@ import pymongo
 # 날씨 데이터 관리
 # - 이전 날씨 데이터를 삭제하고 현재 데이터 삽입
 
-# mongoDB data로드
+# mongoDB data로드.
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 db = client["chatbot-data"]

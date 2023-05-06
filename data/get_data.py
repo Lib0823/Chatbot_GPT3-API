@@ -3,7 +3,7 @@ from data import db_data_manage
 import pymongo
 
 
-# 날씨 데이터 처리
+# 날씨 데이터 처리.
 db_data_manage.weather_deleteData()
 db_data_manage.weather_insertData()
 
