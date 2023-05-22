@@ -20,7 +20,7 @@
 <b>⭕API 호출</b> - [Python]<br>
 import requests<br>
 import json<br>
-url = 'https://chatbot-api.run.goorm.site/'<br>
+url = 'https://chatbotapi-gpt-inofu.run.goorm.site/'<br>
 headers = {'Content-Type': 'application/json'}<br>
 data = {'user_input': '안녕'}<br>
 response = requests.post(url, headers=headers, data=json.dumps(data))<br>
@@ -35,14 +35,4 @@ print(response.json())<br>
 2️⃣ local환경에 mongoDB를 설치. DB: chatbot-data, Collection: basic<br>
 3️⃣ project를 클라우드 환경(goormIDE)에 올려 Flask실행<br>
 
-<br><br>
-```
-┌───────────────────────────────────────────────┐
-   __ _  ___   ___  _ __ _ __ ___   (_) ___  
-    / _` |/ _ \ / _ \| '__| '_ ` _ \  | |/ _ \ 
-   | (_| | (_) | (_) | |  | | | | | |_| | (_) |
-    \__, |\___/ \___/|_|  |_| |_| |_(_)_|\___/ 
-    |___/                                      
-			     🌩 𝘼𝙣𝙮𝙤𝙣𝙚 𝙘𝙖𝙣 𝙙𝙚𝙫𝙚𝙡𝙤𝙥!
-└───────────────────────────────────────────────┘
-```
+
