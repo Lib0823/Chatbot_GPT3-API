@@ -15,7 +15,7 @@
 > Python으로 GTP-2모델 학습 및 처리<br>
 > Flask Web Framework를 활용하여 API구현<br>
 > MongoDB를 사용하여 chatData관리<br>
-> goormIDE 클라우드 환경에서 Nginx구동 (예정)<br>
+> goormIDE 클라우드 환경에서 Nginx구동<br>
 <br>
 <b>⭕API 호출</b> - [Python]<br>
 import requests<br>
