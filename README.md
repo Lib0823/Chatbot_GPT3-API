@@ -6,13 +6,13 @@
 <p>PAE, MiracleStep, WorkingMate 프로젝트 애플리케이션 상용화 시에 각 서비스에 대한 정보가 학습되어있는 챗봇이 있으면 간단한 문제는 쉽고 빠르게 해결할 수 있며, 사용자 입장에서도 바로바로 답변 받을 수 있기 때문에 편리할 것 같다고 생각하여 각각의 필요한 정보들을 간단하게 학습시켜 사용할 수 있도록 API를 개발함.</p>
 <br>
 <b>⭕특징</b><br>
-> openAI사의 GPT-2 모델 활용<br>
+> openAI사의 GPT-3 모델 활용<br>
 > mongoDB에 원하는 데이터(json)를 추가하여 학습<br>
 > 사용 프로젝트에 맞게 이름, 형식 등 세팅값 조정 가능<br>
 > 기상청의 openAPI를 사용하여 현재 날씨정보를 자동으로 학습<br>
 <br>
 <b>⭕사용 기술</b><br>
-> Python으로 GTP-2모델 학습 및 처리<br>
+> Python으로 GTP-3모델 학습 및 처리<br>
 > Flask Web Framework를 활용하여 API구현<br>
 > MongoDB를 사용하여 chatData관리<br>
 > goormIDE 클라우드 환경에서 Nginx구동<br>
