@@ -13,12 +13,12 @@ max_tokens = config.max_tokens
 
 # 데이터 학습시키기
 def model_training(chat_data):
-    prompt = ""
+    inputValue = ""
     for chat in chat_data:
-        prompt += f"User: {chat['user']}\nAI: {chat['ai']}\n"
+        inputValue += f"User: {chat['user']}\nAI: {chat['ai']}\n"
     response = openai.Completion.create(
-        engine=model_engine,
-        prompt=prompt,
+        engine="text-davinci-002",
+        prompt=inputValue,
         temperature=temperature,
         max_tokens=max_tokens,
         n=1,

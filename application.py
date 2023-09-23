@@ -1,6 +1,7 @@
 from utils import Api_key
 from data import get_data
 from learning import model_training
+from pymongo import MongoClient
 
 from flask import Flask, request, jsonify, render_template
 from flask_apscheduler import APScheduler
@@ -19,12 +20,14 @@ application.config['SCHEDULER_API_ENABLED'] = True
 application.config['JOBS'] = [
     {
         'id': 'weather_update',
-        'func': get_data.process_weather(),
+        'func': get_data.process_weather,
         'trigger': 'interval',
         'hours': 0.5
     }
 ]
 
+# json [] 사용해서 제목과 url제공
+# ex> user : 지원정보1, ai : [지원프로그램제목, 사이트URL]
 
 # API mapping(POST) - basic
 @application.route("/", methods=['POST'])
@@ -39,9 +42,18 @@ def chatbot_basic():
 
         response = model_training(learn_data + [{"user": user_input, "ai": ""}])
         return jsonify({"basic": response})
-    except:
-        return jsonify({"error": "네트워크에 문제가 발생했습니다. 다시 시도해주세요."})
-
+    except Exception as e:
+        # 에러 처리
+        error_code = getattr(e, "code", None)
+        if error_code:
+            # 에러 코드 사용
+            # 원하는 작업 수행
+            return jsonify({"error": f"Error code: {error_code}"})
+        else:
+            # 에러 코드가 없는 경우
+            # 기본적인 에러 처리
+            return jsonify({"error": "네트워크에 문제가 발생했습니다."})
+        
 # API mapping(POST) - pae
 @application.route("/pae", methods=['POST'])
 def chatbot_pae():
@@ -135,8 +147,10 @@ def chatbot_piuda():
 
         response = model_training(learn_data + [{"user": user_input, "ai": ""}])
         return jsonify({"piuda": response})
-    except:
-        return jsonify({"error": "네트워크에 문제가 발생했습니다. 다시 시도해주세요."})
+    except Exception as e:
+        # 에러 처리
+        error_code = getattr(e, "code", None)
+        return jsonify({"piuda": response})
 
     
 
@@ -145,13 +159,15 @@ def chatbot_piuda():
 def chatbot_help():
     return render_template('help.html')
 
-
+    
 # 앱 실행
 if __name__ == "__main__":
-    application.debug = True
-    application.run(host='0.0.0.0', port=int(sys.argv[1]))
-
     # 스케줄러 시작
     scheduler.init_app(application)
     scheduler.start()
+    
+    application.debug = True
+    application.run(host='0.0.0.0', port=int(sys.argv[1]))
+
+    
 
