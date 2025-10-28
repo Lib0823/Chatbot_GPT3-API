@@ -1,8 +1,8 @@
 
 # openAI - API KEY
-openAI_key = ""
+openAI_key = "{API_KEY}"
 
 
 # 기상청 - API KEY
-weather_key = ""
+weather_key = "{API_KEY}"
 
